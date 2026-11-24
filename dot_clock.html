@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dot Clock</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #fff;
+            color: #242424;
+            font: 15px Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        main {
+            width: 92%;
+            max-width: 480px;
+            min-width: 0;
+            padding: 24px 0
+        }
+
+        .time {
+            font-size: 32px;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: .08em;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 18px
+        }
+
+        svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1
+        }
+
+        .controls {
+            display: grid;
+            gap: 16px;
+            padding: 24px 8px 0
+        }
+
+        .control {
+            display: grid;
+            grid-template-columns: 86px minmax(0, 1fr) 30px;
+            align-items: center;
+            gap: 12px
+        }
+
+        input {
+            width: 100%;
+            accent-color: #242424
+        }
+
+        output {
+            text-align: right;
+            font-variant-numeric: tabular-nums
+        }
+
+        button {
+            font: inherit;
+            background: #242424;
+            color: white;
+            border: 0;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 3px
+        }
+
+        button:hover {
+            background: #444
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .control:nth-child(1) {
+            --ring-color: #C94A36
+        }
+
+        .control:nth-child(2) {
+            --ring-color: #284C96
+        }
+
+        .control:nth-child(3) {
+            --ring-color: #D9AA29
+        }
+
+        .control label {
+            display: flex;
+            align-items: center;
+            gap: 7px
+        }
+
+        .control label::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--ring-color);
+            flex-shrink: 0
+        }
+
+        .control input {
+            accent-color: var(--ring-color)
+        }
+
+        @media(max-width:480px) {
+            body {
+                align-items: flex-start
+            }
+
+            main {
+                padding: 16px 0
+            }
+
+            .time {
+                font-size: 28px;
+                margin-bottom: 12px
+            }
+
+            .controls {
+                padding-top: 16px;
+                gap: 12px
+            }
+
+            input {
+                min-width: 0
+            }
+
+            button {
+                font-size: 14px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="time" id="time">10:36:52</div>
+        <svg xmlns="http://www.w3.org/2000/svg" id="clock" width="420" height="420" viewBox="0 0 420 420" role="img"
+            aria-label="Dot clock">
+            <rect width="420" height="420" fill="#F7F6F2" />
+            <circle cx="210" cy="210" r="174" fill="none" stroke="#f3e8e3" stroke-width="6" />
+            <circle cx="210.0" cy="36.0" r="14" fill="#f3e8e3" />
+            <circle cx="297.0" cy="59.31157974150767" r="14" fill="#f3e8e3" />
+            <circle cx="360.68842025849233" cy="122.99999999999999" r="14" fill="#f3e8e3" />
+            <circle cx="384.0" cy="210.0" r="14" fill="#f3e8e3" />
+            <circle cx="360.68842025849233" cy="296.99999999999994" r="14" fill="#f3e8e3" />
+            <circle cx="297.0" cy="360.68842025849233" r="14" fill="#f3e8e3" />
+            <circle cx="210.00000000000003" cy="384.0" r="14" fill="#f3e8e3" />
+            <circle cx="123.00000000000004" cy="360.68842025849233" r="14" fill="#f3e8e3" />
+            <circle cx="59.31157974150773" cy="297.00000000000006" r="14" fill="#f3e8e3" />
+            <circle cx="36.0" cy="210.00000000000003" r="14" fill="#f3e8e3" />
+            <circle cx="59.31157974150767" cy="122.99999999999999" r="14" fill="#f3e8e3" />
+            <circle cx="122.99999999999993" cy="59.31157974150773" r="14" fill="#f3e8e3" />
+            <path d="M210 36 A174 174 0 1 1 59.31157974150767 122.99999999999999" fill="none" stroke="#C94A36"
+                stroke-width="6" stroke-linecap="round" />
+            <circle cx="59.31157974150767" cy="122.99999999999999" r="14" fill="#C94A36" />
+            <circle cx="210" cy="210" r="128" fill="none" stroke="#e6e8eb" stroke-width="6" />
+            <circle cx="210.0" cy="82.0" r="11" fill="#e6e8eb" />
+            <circle cx="331.73523408577967" cy="170.44582472000673" r="11" fill="#e6e8eb" />
+            <circle cx="285.2365122934366" cy="313.5541752799933" r="11" fill="#e6e8eb" />
+            <circle cx="134.76348770656347" cy="313.5541752799933" r="11" fill="#e6e8eb" />
+            <circle cx="88.26476591422033" cy="170.44582472000675" r="11" fill="#e6e8eb" />
+            <path d="M210 82 A128 128 0 0 1 285.2365122934366 313.5541752799933" fill="none" stroke="#284C96"
+                stroke-width="6" stroke-linecap="round" />
+            <circle cx="210.0" cy="82.0" r="11" fill="#284C96" />
+            <circle cx="331.73523408577967" cy="170.44582472000673" r="11" fill="#284C96" />
+            <circle cx="285.2365122934366" cy="313.5541752799933" r="11" fill="#284C96" />
+            <circle cx="210.0" cy="114.0" r="5.5" fill="#e6e8eb" />
+            <circle cx="271.70761052990775" cy="136.4597334605781" r="5.5" fill="#e6e8eb" />
+            <circle cx="304.54154428917195" cy="193.32977494397468" r="5.5" fill="#e6e8eb" />
+            <circle cx="293.1384387633061" cy="258.0" r="5.5" fill="#e6e8eb" />
+            <circle cx="242.8339337592642" cy="300.2104915954472" r="5.5" fill="#e6e8eb" />
+            <circle cx="177.1660662407358" cy="300.2104915954472" r="5.5" fill="#e6e8eb" />
+            <circle cx="126.86156123669392" cy="258.00000000000006" r="5.5" fill="#e6e8eb" />
+            <circle cx="115.45845571082802" cy="193.3297749439747" r="5.5" fill="#e6e8eb" />
+            <circle cx="148.2923894700922" cy="136.45973346057815" r="5.5" fill="#e6e8eb" />
+            <circle cx="210.0" cy="114.0" r="5.5" fill="#284C96" />
+            <circle cx="271.70761052990775" cy="136.4597334605781" r="5.5" fill="#284C96" />
+            <circle cx="304.54154428917195" cy="193.32977494397468" r="5.5" fill="#284C96" />
+            <circle cx="293.1384387633061" cy="258.0" r="5.5" fill="#284C96" />
+            <circle cx="242.8339337592642" cy="300.2104915954472" r="5.5" fill="#284C96" />
+            <circle cx="177.1660662407358" cy="300.2104915954472" r="5.5" fill="#284C96" />
+            <circle cx="210" cy="210" r="65" fill="none" stroke="#f5f0e2" stroke-width="6" />
+            <circle cx="210.0" cy="145.0" r="9" fill="#f5f0e2" />
+            <circle cx="271.81867355918496" cy="189.9138953656284" r="9" fill="#f5f0e2" />
+            <circle cx="248.20604139901076" cy="262.58610463437157" r="9" fill="#f5f0e2" />
+            <circle cx="171.79395860098924" cy="262.5861046343716" r="9" fill="#f5f0e2" />
+            <circle cx="148.181326440815" cy="189.91389536562843" r="9" fill="#f5f0e2" />
+            <path d="M210 145 A65 65 0 1 1 148.181326440815 189.91389536562843" fill="none" stroke="#D9AA29"
+                stroke-width="6" stroke-linecap="round" />
+            <circle cx="210.0" cy="145.0" r="9" fill="#D9AA29" />
+            <circle cx="271.81867355918496" cy="189.9138953656284" r="9" fill="#D9AA29" />
+            <circle cx="248.20604139901076" cy="262.58610463437157" r="9" fill="#D9AA29" />
+            <circle cx="171.79395860098924" cy="262.5861046343716" r="9" fill="#D9AA29" />
+            <circle cx="148.181326440815" cy="189.91389536562843" r="9" fill="#D9AA29" />
+            <circle cx="210.0" cy="175.0" r="4.5" fill="#f5f0e2" />
+            <circle cx="232.49756633902888" cy="183.18844449083576" r="4.5" fill="#f5f0e2" />
+            <circle cx="244.46827135542728" cy="203.92231378165744" r="4.5" fill="#f5f0e2" />
+            <circle cx="240.31088913245534" cy="227.5" r="4.5" fill="#f5f0e2" />
+            <circle cx="221.9707050163984" cy="242.8892417275068" r="4.5" fill="#f5f0e2" />
+            <circle cx="198.0292949836016" cy="242.8892417275068" r="4.5" fill="#f5f0e2" />
+            <circle cx="179.68911086754466" cy="227.5" r="4.5" fill="#f5f0e2" />
+            <circle cx="175.53172864457272" cy="203.92231378165746" r="4.5" fill="#f5f0e2" />
+            <circle cx="187.50243366097112" cy="183.18844449083576" r="4.5" fill="#f5f0e2" />
+            <circle cx="210.0" cy="175.0" r="4.5" fill="#D9AA29" />
+            <circle cx="232.49756633902888" cy="183.18844449083576" r="4.5" fill="#D9AA29" />
+        </svg><noscript>
+            <p style="text-align:center;font-size:13px">Static preview. Open in a browser with JavaScript enabled to use
+                the live clock.</p>
+        </noscript>
+        <div class="controls">
+            <div class="control"><label for="hours">Hours</label><input id="hours" type="range" min="0" max="23"
+                    value="10"><output id="hoursValue" for="hours">10</output></div>
+            <div class="control"><label for="minutes">Minutes</label><input id="minutes" type="range" min="0" max="59"
+                    value="36"><output id="minutesValue" for="minutes">36</output></div>
+            <div class="control"><label for="seconds">Seconds</label><input id="seconds" type="range" min="0" max="59"
+                    value="52"><output id="secondsValue" for="seconds">52</output></div>
+            <div class="actions"><button id="toggle" type="button" aria-pressed="false">Start</button><button id="sync"
+                    type="button">Sync to Local Time</button></div>
+        </div>
+    </main>
+    <script>
+        const svg = document.getElementById('clock');
+        const controls = ['hours', 'minutes', 'seconds'].map(id => document.getElementById(id));
+        const ns = 'http://www.w3.org/2000/svg';
+        const pad = n => String(n).padStart(2, '0');
+        function element(tag, attrs) { const e = document.createElementNS(ns, tag); for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v); svg.appendChild(e); }
+        function mix(c, b) { return '#' + [1, 3, 5].map(i => Math.round(parseInt(c.slice(i, i + 2), 16) * .08 + parseInt(b.slice(i, i + 2), 16) * .92).toString(16).padStart(2, '0')).join(''); }
+        function pos(i, n, r) { return [210 + Math.sin(i * 2 * Math.PI / n) * r, 210 - Math.cos(i * 2 * Math.PI / n) * r]; }
+        function arc(n, r, k) { return `M${pos(0, n, r).join(' ')} A${r} ${r} 0 ${(k - 1) / n > .5 ? 1 : 0} 1 ${pos(k - 1, n, r).join(' ')}`; }
+        function draw() {
+            const [h, m, s] = controls.map(e => Number(e.value));
+            document.getElementById('time').textContent = [h, m, s].map(pad).join(':');
+            const bg = h >= 12 ? '#242424' : '#F7F6F2';
+            const c = h >= 12 ? ['#E66A50', '#7799DD', '#EFC34C'] : ['#C94A36', '#284C96', '#D9AA29'];
+            controls.forEach((e, i) => e.closest(".control").style.setProperty("--ring-color", c[i]));
+            while (svg.firstChild) svg.removeChild(svg.firstChild);
+            svg.setAttribute('aria-label', `Time: ${pad(h)}:${pad(m)}:${pad(s)}`);
+            element('rect', { width: 420, height: 420, fill: bg });
+            const rings = [
+                { n: 12, r: 174, k: h % 12, c: c[0], d: 14, hour: true, link: true },
+                { n: 5, r: 128, k: Math.floor(m / 10), c: c[1], d: 11, link: true },
+                { n: 9, r: 96, k: m % 10, c: c[1], d: 5.5 },
+                { n: 5, r: 65, k: Math.floor(s / 10), c: c[2], d: 9, link: true },
+                { n: 9, r: 35, k: s % 10, c: c[2], d: 4.5 }];
+            for (const g of rings) {
+                const pale = mix(g.c, bg);
+                if (g.link) element('circle', { cx: 210, cy: 210, r: g.r, fill: 'none', stroke: pale, 'stroke-width': 6 });
+                for (let i = 0; i < g.n; i++) { const [cx, cy] = pos(i, g.n, g.r); element('circle', { cx, cy, r: g.d, fill: pale }); }
+                if (g.link && (g.hour ? g.k > 0 : g.k >= 2)) element('path', { d: arc(g.n, g.r, g.hour ? g.k + 1 : g.k), fill: 'none', stroke: g.c, 'stroke-width': 6, 'stroke-linecap': 'round' });
+                for (let i = 0; i < g.n; i++)if (g.hour ? i === g.k : i < g.k) { const [cx, cy] = pos(i, g.n, g.r); element('circle', { cx, cy, r: g.d, fill: g.c }); }
+            }
+            controls.forEach(e => document.getElementById(e.id + 'Value').textContent = pad(e.value));
+        }
+        const toggle = document.getElementById('toggle');
+        let timer = null, base = 0, started = 0;
+        function readTime() { return controls.reduce((v, e) => v * 60 + Number(e.value), 0); }
+        function tick() { const t = (base + Math.floor((performance.now() - started) / 1000)) % 86400; controls[0].value = Math.floor(t / 3600); controls[1].value = Math.floor(t / 60) % 60; controls[2].value = t % 60; draw(); }
+        toggle.addEventListener('click', () => { if (timer !== null) { tick(); clearInterval(timer); timer = null; toggle.textContent = 'Start'; toggle.setAttribute('aria-pressed', 'false'); } else { base = readTime(); started = performance.now(); timer = setInterval(tick, 100); toggle.textContent = 'Pause'; toggle.setAttribute('aria-pressed', 'true'); } });
+        controls.forEach(e => e.addEventListener('input', () => { if (timer !== null) { base = readTime(); started = performance.now(); } draw(); }));
+        function syncLocalTime() {
+            const now = new Date();
+            controls[0].value = now.getHours();
+            controls[1].value = now.getMinutes();
+            controls[2].value = now.getSeconds();
+            if (timer === null) toggle.click();
+            base = readTime();
+            started = performance.now() - now.getMilliseconds();
+            tick();
+        }
+        document.getElementById("sync").addEventListener("click", syncLocalTime);
+        syncLocalTime();
+    </script>
+</body>
+
+</html>
